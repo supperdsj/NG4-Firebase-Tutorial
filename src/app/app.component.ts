@@ -9,17 +9,17 @@ import 'rxjs/Rx';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-  courses$: FirebaseListObservable<any>;
-  course$: FirebaseObjectObservable<any>;
-  lastCourse: any;
+  // title = 'app';
+  // courses$: FirebaseListObservable<any>;
+  // course$: FirebaseObjectObservable<any>;
+  // lastCourse: any;
 
   constructor(private db: AngularFireDatabase) {
-    this.courses$ = db.list('courses');
-    this.courses$.subscribe(console.log);
-    this.course$ = db.object('courses/-KlXW9ABuOzkCe5Vo255');
-    this.course$.subscribe(console.log);
-    this.courses$.map(courses => courses[courses.length - 1]).subscribe(course => this.lastCourse = course);
+    // this.courses$ = db.list('courses');
+    // this.courses$.subscribe(console.log);
+    // this.course$ = db.object('courses/-KlXW9ABuOzkCe5Vo255');
+    // this.course$.subscribe(console.log);
+    // this.courses$.map(courses => courses[courses.length - 1]).subscribe(course => this.lastCourse = course);
     // const config = {
     //   apiKey: 'AIzaSyDLlNNKJCGsN4m03iAdFaDxiiggGCitWV8',
     //   authDomain: 'old-patient.firebaseapp.com',
@@ -35,25 +35,25 @@ export class AppComponent {
     //   console.log(snap.key, snap.val())
     // });
   }
-
-  listPush() {
-    this.courses$.push({desc: 'test new course'}).then(() => console.log('push success'), () => console.error('push error'));
-  }
-
-  listRemove() {
-    this.courses$.remove(this.lastCourse);
-  }
-
-  listUpdate() {
-    this.courses$.update(this.lastCourse, {desc: 'updated course ' + (new Date())});
-
-  }
-
-  objUpdate() {
-    this.course$.update({desc: 'update course ' + (new Date())}).then(() => console.log('update success', () => console.error('update error')));
-  }
-
-  objSet() {
-    this.course$.set({desc: 'update course ' + (new Date())}).then(() => console.log('set success', () => console.error('set error')));
-  }
+  //
+  // listPush() {
+  //   this.courses$.push({desc: 'test new course'}).then(() => console.log('push success'), () => console.error('push error'));
+  // }
+  //
+  // listRemove() {
+  //   this.courses$.remove(this.lastCourse);
+  // }
+  //
+  // listUpdate() {
+  //   this.courses$.update(this.lastCourse, {desc: 'updated course ' + (new Date())});
+  //
+  // }
+  //
+  // objUpdate() {
+  //   this.course$.update({desc: 'update course ' + (new Date())}).then(() => console.log('update success', () => console.error('update error')));
+  // }
+  //
+  // objSet() {
+  //   this.course$.set({desc: 'update course ' + (new Date())}).then(() => console.log('set success', () => console.error('set error')));
+  // }
 }
