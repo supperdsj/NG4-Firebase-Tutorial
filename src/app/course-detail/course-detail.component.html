@@ -1,16 +1,15 @@
-
-
-<h2>TODO</h2>
+<h2>{{(course$ | async)?.description}}</h2>
 
 
 <div class="lessons-list-container v-h-center-block-parent">
 
   <div class="nav-bar">
-    <button>Previous Page</button>
-    <button>Next Page</button>
+    <button (click)="previous()">Previous Page</button>
+    <button (click)="next()">Next Page</button>
   </div>
 
-  <!--<lessons-list></lessons-list>-->
+  <app-lessons-list *ngIf="lessons" [lessons]="lessons"></app-lessons-list>
+
 
   <div class="tools-bar">
     <button>
