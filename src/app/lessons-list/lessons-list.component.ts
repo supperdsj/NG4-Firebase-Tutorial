@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Lesson} from "../shared/model/lesson";
 
 @Component({
@@ -9,6 +9,7 @@ import {Lesson} from "../shared/model/lesson";
 export class LessonsListComponent implements OnInit {
 
   @Input() lessons: Lesson[];
+  @Output('lesson') lessonEmitter = new EventEmitter<Lesson>();
 
   constructor() {
   }
@@ -16,4 +17,7 @@ export class LessonsListComponent implements OnInit {
   ngOnInit() {
   }
 
+  selectLesson(lesson: Lesson) {
+    this.lessonEmitter.emit(lesson);
+  }
 }
