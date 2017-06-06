@@ -1,0 +1,15 @@
+import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
+import {Lesson} from "./lesson";
+import {Observable} from "rxjs/Observable";
+import {Injectable} from "@angular/core";
+import {LessonsService} from "./lessons.service";
+@Injectable()
+export class LessonResolver implements Resolve<Lesson> {
+  constructor(private lessonsService: LessonsService) {
+  }
+
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Lesson> | Promise<Lesson> | Lesson {
+    console.log(route.params);
+    return this.lessonsService.findLessonByUrl(route.params['id']).first();
+  }
+}

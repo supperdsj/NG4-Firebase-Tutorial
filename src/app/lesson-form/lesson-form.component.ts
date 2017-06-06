@@ -1,20 +1,19 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {validateUrl} from "../shared/validators/validateUrl";
+import {Lesson} from "../shared/model/lesson";
 
 @Component({
   selector: 'app-lesson-form',
   templateUrl: './lesson-form.component.html',
   styleUrls: ['./lesson-form.component.css']
 })
-export class LessonFormComponent implements OnInit {
+export class LessonFormComponent implements OnInit, OnChanges {
 
   form: FormGroup;
+  @Input() initialValue: Lesson;
 
   constructor(private  fb: FormBuilder) {
-  }
-
-  ngOnInit() {
     this.form = this.fb.group({
       description: ['', Validators.required],
       url: ['', Validators.required],
@@ -22,6 +21,15 @@ export class LessonFormComponent implements OnInit {
       tags: ['', Validators.required],
       longDescription: ['']
     });
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['initialValue']) {
+      this.form.patchValue(changes['initialValue'].currentValue);
+    }
+  }
+
+  ngOnInit() {
   }
 
   reset() {

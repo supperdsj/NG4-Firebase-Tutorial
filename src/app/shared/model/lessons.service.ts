@@ -67,6 +67,14 @@ export class LessonsService {
     return this.firebaseUpdate(dataToSave);
   }
 
+  saveLesson(lessonId: string, lesson): Observable<any> {
+    const lessonsToSave = Object.assign({}, lesson);
+    delete(lessonsToSave.$key);
+    const dataToSave = {};
+    dataToSave["lessons/" + lessonId] = lessonsToSave;
+    return this.firebaseUpdate(dataToSave);
+  }
+
   firebaseUpdate(dataToSave) {
     const subject = new Subject();
     this.sdkDb.update(dataToSave)
