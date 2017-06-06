@@ -12,7 +12,7 @@
 
 
   <div class="tools-bar">
-    <button>
+    <button routerLink="new" [queryParams]="{courseId:(course$|async)?.$key}">
       New Lesson
     </button>
   </div>
