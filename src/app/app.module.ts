@@ -22,6 +22,9 @@ import {LessonFormComponent} from './lesson-form/lesson-form.component';
 import {EditLessonComponent} from './edit-lesson/edit-lesson.component';
 import {LessonResolver} from "./shared/model/lesson.resolver";
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import {AuthService} from "./shared/security/auth.service";
+import {AuthGuard} from "./shared/security/auth.guard";
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { LoginComponent } from './login/login.component';
     NewLessonComponent,
     LessonFormComponent,
     EditLessonComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,7 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot(routerConfig),
     ReactiveFormsModule
   ],
-  providers: [LessonsService, CoursesService, LessonResolver],
+  providers: [LessonsService, CoursesService, LessonResolver,AuthService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {
